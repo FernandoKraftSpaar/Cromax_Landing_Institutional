@@ -1,10 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
+  # A publicação acontece quando a main é atualizada (ex.: merge de um PR).
   push:
-    # main = produção. feat/landing-home = preview temporário do PR #1
-    # (remover a branch de feature quando o PR for mesclado).
-    branches: [main, "feat/landing-home"]
+    branches: [main]
+  # Permite disparo manual (Actions -> Run workflow) para qualquer branch,
+  # útil para pré-visualizar um PR antes do merge.
   workflow_dispatch:
 
 permissions:
