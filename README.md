@@ -39,6 +39,25 @@ O **conteúdo** (textos, dados) fica em `src/content/*` e os **componentes** cui
 
 Definidos em `tailwind.config.ts`. Detalhes completos (paleta, tipografia, decisões de UI/UX, mapa de conteúdo) em [`docs/CONSOLIDACAO.md`](./docs/CONSOLIDACAO.md).
 
-## Deploy (Azure SWA)
+## Deploy
 
-O workflow `.github/workflows/azure-static-web-apps.yml` publica o `dist/`. É necessário configurar o secret `AZURE_STATIC_WEB_APPS_API_TOKEN` no repositório. O `staticwebapp.config.json` garante o fallback de SPA para as rotas do React Router.
+### GitHub Pages (método atual)
+
+Workflow: `.github/workflows/deploy-pages.yml`. Ele roda o build do Vite, gera o
+`404.html` (fallback de SPA) e publica via GitHub Pages.
+
+Pré-requisito (uma vez): **Settings → Pages → Build and deployment → Source = GitHub Actions**.
+
+Como é um _project site_, o app é servido em `/<repo>/`. O build define
+`base` automaticamente quando a env `GITHUB_PAGES=true` está presente (definida no
+workflow), e o React Router usa `basename={import.meta.env.BASE_URL}`. Em
+local/Azure o `base` continua `/`.
+
+URL: `https://<usuario>.github.io/Cromax_Landing_Institutional/`
+
+### Azure Static Web Apps (opcional / futuro)
+
+`.github/workflows/azure-static-web-apps.yml` está como `workflow_dispatch` (manual)
+para não falhar sem o secret. Para usar: configure `AZURE_STATIC_WEB_APPS_API_TOKEN`
+e reative os gatilhos. O `staticwebapp.config.json` garante o fallback de SPA e
+oferece previews automáticos por PR.
