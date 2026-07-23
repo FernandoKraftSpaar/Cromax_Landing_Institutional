@@ -11,7 +11,7 @@ export function FeaturedProduct() {
         <div className="rounded-[2.5rem] bg-white p-4 shadow-xl">
           
         </div>
-
+        <img src='public/imagens/lehft.png' alt="LogoLehft" />
         <div>
           <span className="font-display text-sm font-bold uppercase tracking-widest text-cromax">
             {product.eyebrow}
