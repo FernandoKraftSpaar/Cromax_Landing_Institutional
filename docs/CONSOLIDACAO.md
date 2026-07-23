@@ -11,7 +11,7 @@ Cromax Soluções Diagnósticas — **DeepTech de biotecnologia diagnóstica (po
 - Vite + React + TypeScript + Tailwind CSS; ícones `lucide-react`; **React Router** (multi-rota, sem 404).
 - Conteúdo separado da apresentação: textos/dados em `src/content/*.ts` (tipados); componentes só cuidam da UI.
 - Um componente por seção; tipos centralizados em `src/types`.
-- Deploy Azure Static Web Apps: `staticwebapp.config.json` (fallback SPA → index.html) + workflow CI. Preparado para futura integração com Azure Functions.
+- Deploy: **GitHub Pages** (workflow `deploy-pages.yml` → build Vite + `404.html` de fallback SPA). _Project site_ servido em `/Cromax_Landing_Institutional/` (base do Vite + `basename` do router). Fonte do Pages deve estar como **GitHub Actions**.
 - Fluxo PR-first: nunca commitar direto na branch principal (`main`).
 
 ## 3. Design tokens
