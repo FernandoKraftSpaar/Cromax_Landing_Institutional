@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={hero.imageSrc} alt={hero.imageAlt} className="h-full w-full object-cover" />
+        <img src='/public/images/imagem_home.png' alt={hero.imageAlt} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
       </div>
 
