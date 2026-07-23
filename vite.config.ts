@@ -8,6 +8,6 @@ const base = process.env.GITHUB_PAGES ? '/Cromax_Landing_Institutional/' : '/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base,
+  base: '/Cromax_Landing_Institutional/',
   plugins: [react()],
-});
+})
