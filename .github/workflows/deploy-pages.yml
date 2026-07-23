@@ -1,11 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite site to GitHub Pages
 
 on:
-  # A publicação acontece quando a main é atualizada (ex.: merge de um PR).
   push:
-    branches: [main]
-  # Permite disparo manual (Actions -> Run workflow) para qualquer branch,
-  # útil para pré-visualizar um PR antes do merge.
+    branches: [main]        # ajuste se sua branch for outra
   workflow_dispatch:
 
 permissions:
@@ -13,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-# Uma publicação por vez.
+# Garante um deploy de cada vez
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -22,21 +19,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - name: Build (Vite — base=/Cromax_Landing_Institutional/)
-        run: npm run build
-        env:
-          GITHUB_PAGES: "true"
-      - name: Fallback de SPA (404.html = index.html)
-        run: cp dist/index.html dist/404.html
-      - uses: actions/upload-pages-artifact@v3
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build   # gera a pasta dist/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./dist
 
   deploy:
     needs: build
@@ -45,5 +49,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
