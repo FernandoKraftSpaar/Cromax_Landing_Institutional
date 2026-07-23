@@ -9,9 +9,9 @@ export function FeaturedProduct() {
     <section className="bg-neutralbg py-24">
       <div className="container-cromax grid items-center gap-12 md:grid-cols-2">
         <div className="rounded-[2.5rem] bg-white p-4 shadow-xl">
-          
+          <img src='public/images/lehft.png' alt="LogoLehft" />
         </div>
-        <img src='public/imagens/lehft.png' alt="LogoLehft" />
+      
         <div>
           <span className="font-display text-sm font-bold uppercase tracking-widest text-cromax">
             {product.eyebrow}
