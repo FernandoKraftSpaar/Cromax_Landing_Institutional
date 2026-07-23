@@ -9,7 +9,7 @@ export function FeaturedProduct() {
     <section className="bg-neutralbg py-24">
       <div className="container-cromax grid items-center gap-12 md:grid-cols-2">
         <div className="rounded-[2.5rem] bg-white p-4 shadow-xl">
-          <img src='/images/lehft.png' alt="LogoLehft" />
+          <img src='/Cromax_Landing_Institutional/images/lehft.png' alt="LogoLehft" />
         </div>
       
         <div>
